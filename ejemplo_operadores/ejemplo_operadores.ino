@@ -1,9 +1,9 @@
 /*
+ * Operadores Relacionales Lógicos
+ * Por: Javier Merino
+ * Fecha: 8 de Abril de 2022
  * 
- * Por: Hugo Vargas
- * Fecha: 28 de junio de 2021
- * 
- * Esto es una muestra de la estructura básica de un programa
+ * Este ejemplo demustra el comportamiento de los operadores relaciones logicos.
  */
 
 // Bibliotecas
