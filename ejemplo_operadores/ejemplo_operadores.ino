@@ -30,4 +30,4 @@ void loop() {// Inicio de void loop
 
 }// Fin de void loop
 
-// Funciones del usuario
+// Funciones del usuariop
