@@ -3,7 +3,7 @@
  * Por: Javier Merino
  * Fecha: 8 de Abril de 2022
  * 
- * Este ejemplo demustra el comportamiento de los operadores relaciones logicos.
+ * Este ejemplo demustra el comportamiento de los operadores relacionales logicos.
  */
 
 // Bibliotecas
@@ -23,6 +23,10 @@ void setup() {// Inicio de void setup ()
 // Cuerpo del programa - Se ejecuta constamente
 void loop() {// Inicio de void loop
   // put your main code here, to run repeatedly:
+
+  if(dinero > 200 && hambre > 192){
+    comprarTacos();
+  }
 
 }// Fin de void loop
 
