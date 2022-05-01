@@ -53,44 +53,71 @@ void setup() {
   pinMode(Refri_A,OUTPUT);
   digitalWrite(Refri_M,LOW);
   digitalWrite(Refri_A,LOW);
-  
 
 }
 
 // Codigo principal del programa
 
 void loop() {
+  lecturaDHT();
+  lecturaBotones();
+  logica();
+  reporte();
+}
+
+void ambosCasos(){
+  
+  if(temp >= 28){
+      digitalWrite(Refri_M,HIGH);
+      digitalWrite(Refri_A,HIGH);
+    }
+    
+  else{
+      digitalWrite(Refri_M,LOW);
+      digitalWrite(Refri_A,HIGH);
+    }  
+}
+
+void lecturaDHT(){
   temp = dht.readTemperature();
   h = dht.readHumidity();
   t = dht.readTemperature();
   f = dht.readTemperature(true);
-  
+}
+
+void lecturaBotones(){
   if (digitalRead(2)!=0){  boton = 1;  }
   if (digitalRead(3)!=0){  boton = 2;  }
   if (digitalRead(4)!=0){  boton = 3;  }
+}
+
+void logica(){
   
   switch (boton){
   
-  case 1:
+    case 1:
   
     digitalWrite(Refri_M,HIGH);
     digitalWrite(Refri_A,LOW);
     break;
 
-  case 2:
+    case 2:
     ambosCasos();
     break;
 
-  case 3:
+    case 3:
     ambosCasos();
     break;
 
-  default:
+    default:
     digitalWrite(Refri_M,LOW);
     digitalWrite(Refri_A,LOW);
     break;
   }
+}
 
+void reporte(){
+  
   hif = dht.computeHeatIndex(f, h);
   hic = dht.computeHeatIndex(t, h, false);
 
@@ -105,17 +132,4 @@ void loop() {
   Serial.print(F("°C "));
   Serial.print(hif);
   Serial.println(F("°F"));
-}
-
-void ambosCasos(){
-  
-  if(temp >= 28){
-      digitalWrite(Refri_M,HIGH);
-      digitalWrite(Refri_A,HIGH);
-    }
-    
-  else{
-      digitalWrite(Refri_M,LOW);
-      digitalWrite(Refri_A,HIGH);
-    }  
 }
